@@ -1,0 +1,40 @@
+.card__container{
+    padding:40px 20px;
+    width:350px;
+    height:350px;
+    border-radius:20px;
+}
+
+.card__container:hover{
+    filter:opacity(0.8);
+    cursor:pointer;
+}
+
+.card__data{
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-end;
+    height:100%;
+}
+.card__tags{
+    display:flex;
+    padding:3px;
+    align-items:center;
+    
+}
+
+.card__tag{
+    background:rgba(0,0,0,0.7);
+    color:white;
+    border-radius:50px;
+    margin-right:5px;
+    padding:5px 10px;
+    font-size:12px;
+}
+
+.card__title{
+    padding:3px;
+    color:white;
+    text-shadow:1px 2px 3px #000;  
+    letter-spacing:1px; 
+}
