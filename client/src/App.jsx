@@ -13,13 +13,13 @@ function App() {
   const dispatch = useDispatch();
   const blogs = useSelector(state => state.blogs.blogs);
   useEffect(() => {
-    const fetchData = async() => {
+    const fetchData = async () => {
       await fetch("http://localhost:5000/blogs")
         .then((response) => response.json())
         .then((data) => dispatch(setBlogs(data)));
-    }
+    };
     fetchData();
-  }, [])
+  }, [blogs]);
   return (
     <div>
       <Navbar/>

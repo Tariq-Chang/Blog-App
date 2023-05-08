@@ -14,13 +14,13 @@ function Blog({ blog }) {
         <div className="card__data">
           {/* blogs tags */}
           <div className="card__tags">
-            {blog.tags.map((tag) => {
+            {/* {blog.tags.map((tag) => {
               return (
                 <>
                   <p className="card__tag">{tag}</p>
                 </>
               );
-            })}
+            })} */}
           </div>
           {/* blog title */}
           <div className="card__title">
