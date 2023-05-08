@@ -16,7 +16,20 @@
     z-index:10;
 }
 
+.nav__container>.orange__btn {
+    border: none;
+    justify-self: flex-start;
+    flex: 1;
+    background: none;
+}
+
+.create__btn {
+    color: white;
+    text-decoration: none;
+    float: left;
+}
 ul{
+    flex: 1;
     display:flex;
 }
 
@@ -34,4 +47,8 @@ ul > li{
 
 .link:hover{
     color:#000;
+}
+.orange__btn {
+    border: none;
+    margin-right: 5px;
 }

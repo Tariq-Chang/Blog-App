@@ -3,11 +3,13 @@
     width:350px;
     height:350px;
     border-radius:20px;
+    filter: contrast(1.1);
 }
 
-.card__container:hover{
-    filter:opacity(0.8);
+.card__container:hover {
     cursor:pointer;
+    filter: contrast(1.5);
+        opacity: 0.9;
 }
 
 .card__data{
