@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json())
 app.use('/blogs', blogRoutes);
 
-
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Server listening at localhost:${process.env.PORT || 5000}`);
 })

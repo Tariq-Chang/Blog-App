@@ -9,7 +9,14 @@ function Blogs() {
     <div className="cards">
       {
         blogs.map((blog) => {
-          return <Link to={`/blog/${blog.id}`} style={{textDecoration:"none"}}><Blog blog={blog} key={blog.id}/></Link>
+          return (
+            <Link
+              to={`/blog/${blog.id}`}
+              style={{ textDecoration: "none" }}
+              key={blog.id}>
+              <Blog blog={blog} key={blog.id} />
+            </Link>
+          );
         })
       }
     </div>

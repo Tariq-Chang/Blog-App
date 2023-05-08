@@ -10,13 +10,14 @@ function CreateForm() {
   const createBlog = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("blogs/create_blog", {
-        body: JSON.stringify(blog)
-      }, {
+      await fetch("http://localhost:5000/blogs/create_blog", {
+        method: "POST",
         headers: {
-          'Content-Type': "application/json",
-        }
-      })
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(blog),
+      });
+     
     } catch (error) {
       console.log(error);
     }

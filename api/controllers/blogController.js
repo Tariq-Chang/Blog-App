@@ -33,43 +33,62 @@ const getBlogsByTitle = (req, res) => {
 
     res.status(200).json(getBlogs);
 }
-const createBlog = async(req, res) => {
-    const data = JSON.parse(req.body);
-    const { title, body, imageURL, tags, author } = data;
+const createBlog = async (req, res) => {
+  const { title, body, imageURL, tags, authors } = req.body;
+  if (title == null || body == null) {
+    console.log("req.body", req.body);
+    return res.status(403).json({ message: "Please fill all fields" });
+  }
 
-    if (!title || !body || !imageURL || !tags) {
-        return res.status(403).json({ message: "Please fill all fields" });
-    }
+  let newBlog = {
+    id: blogs.length + 1,
+    title,
+    body,
+    imageURL,
+    authors,
+    created_at: new Date().toLocaleDateString,
+    tags,
+  };
+  blogs.push(newBlog);
 
-    let newBlog = { id: blogs.length + 1, title, body, imageURL, author, created_at: new Date().toLocaleDateString, tags };
-    blogs.push(newBlog);
-
-    res.status(201).json({ message: "Blog Created Successfully" });
-}
+  res.status(201).json({ message: "Blog Created Successfully" });
+};
 
 const updateBlog = (req, res) => {
-    const { title, body, imageURL, tags, author } = req.body;
-    const { id } = req.params;
+  const { title, body, imageURL, tags, author } = req.body;
+  const { id } = req.params;
 
-    const getBlog = blogs.find((blog) => blog.id === Number(id));
+  const getBlog = blogs.find((blog) => blog.id === Number(id));
 
-    if (!getBlog) {
-        return res.status(404).json({ message: "Blog does not exist" });
-    }
+  if (!getBlog) {
+    return res.status(404).json({ message: "Blog does not exist" });
+  }
 
-    getBlog.title = title;
-    getBlog.body = body;
-    getBlog.imageURL = imageURL;
-    getBlog.tags = tags;
-    getBlog.author = author;
+  getBlog.title = title;
+  getBlog.body = body;
+  getBlog.imageURL = imageURL;
+  getBlog.tags = tags;
+  getBlog.author = author;
 
-    res.status(200).json({message: "Blog updated successfully"});
-}
+  res.status(200).json({ message: "Blog updated successfully" });
+};
 
-const deleteBlog = () => {
-    const {id} = JSON.parse(req.body);
-
-    blogs = blogs.filter((blog) => blog.id !== Number(id));
-    res.send(blogs);
-}
-module.exports = { getBlogs, getBlogById, createBlog, getBlogsByAuthor, getBlogsByTitle, updateBlog}
+const deleteBlog = (req, res) => {
+  const blogData = blogs.find((blog) => blog.id === Number(req.params.id));
+  if (!blogData) {
+    return res
+      .status(404)
+      .json({ message: "Blog with this id does not exist." });
+  }
+  blogs = blogs.filter((blog) => blog.id !== Number(req.params.id));
+  res.send(blogs);
+};
+module.exports = {
+  getBlogs,
+  getBlogById,
+  createBlog,
+  getBlogsByAuthor,
+  getBlogsByTitle,
+  updateBlog,
+  deleteBlog,
+};
