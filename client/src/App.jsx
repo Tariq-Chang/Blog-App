@@ -8,10 +8,12 @@ import Navbar from './Navbar';
 import CreateForm from './pages/CreateForm';
 import UpdateForm from './pages/UpdateForm';
 import CardDetails from './pages/CardDetails';
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   const dispatch = useDispatch();
-  const blogs = useSelector(state => state.blogs.blogs);
+  const blogs = useSelector((state) => state.blogs.blogs);
   useEffect(() => {
     const fetchData = async () => {
       await fetch("http://localhost:5000/blogs")
@@ -22,16 +24,18 @@ function App() {
   }, [blogs]);
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/blogs" element={<Blogs/>}/>
-        <Route path="/blog/:id" element={<CardDetails/>}/>
-        <Route path="/create_form" element={<CreateForm/>}/>
-        <Route path="/update_form" element={<UpdateForm/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blog/:id" element={<CardDetails />} />
+        <Route path="/create_form" element={<CreateForm />} />
+        <Route path="/update_form" element={<UpdateForm />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>
-  )
+  );
 }
 
 export default App

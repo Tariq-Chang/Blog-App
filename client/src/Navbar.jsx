@@ -25,12 +25,12 @@ function Navbar() {
           </ul>
           <div className="auth__container">
             <button className="orange__btn">
-              <Link to="/create_blog" className="create__btn">
+              <Link to="/login" className="create__btn">
                 Login
               </Link>
             </button>
             <button className="orange__btn">
-              <Link to="/create_blog" className="create__btn">
+              <Link to="/signup" className="create__btn">
                 Sign Up
               </Link>
             </button>
